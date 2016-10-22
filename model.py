@@ -69,7 +69,7 @@ def init_app():
     print "Connected to DB."
 
 
-def connect_to_db(app, db_uri='postgres:///task_manager'):
+def connect_to_db(app, db_uri='postgres:///phones'):
     """Connect the database to our Flask app."""
 
     app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
@@ -87,5 +87,5 @@ if __name__ == "__main__":
 
     # Need to add to db.create_all()
 
-    connect_to_db(app, "postgresql:///task_manager")
+    connect_to_db(app, "postgresql:///phones")
     print "Connected to DB."
