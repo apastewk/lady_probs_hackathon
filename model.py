@@ -5,14 +5,14 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 
-class User(db.Model):
+class Shelter(db.Model):
     """User of website."""
 
-    __tablename__ = "users"
+    __tablename__ = "shelters"
 
-    user_id = db.Column(db.Integer,
-                        autoincrement=True,
-                        primary_key=True)
+    id = db.Column(db.Integer,
+                   autoincrement=True,
+                   primary_key=True)
 
     first_name = db.Column(db.String(30),
                            nullable=False)
@@ -20,12 +20,11 @@ class User(db.Model):
     last_name = db.Column(db.String(30),
                           nullable=False)
 
-    username = db.Column(db.String(64),
-                         unique=True,
-                         nullable=False)
+    shelter_name = db.Column(db.String(64),
+                             nullable=False)
 
-    password = db.Column(db.String(200),
-                         nullable=False)
+    shelter_address = db.Column(db.String(200),
+                                nullable=False)
 
     profile_img = db.Column(db.String(200),
                             nullable=True)
@@ -69,7 +68,7 @@ def init_app():
     print "Connected to DB."
 
 
-def connect_to_db(app, db_uri='postgres:///task_manager'):
+def connect_to_db(app, db_uri='postgres:///phones'):
     """Connect the database to our Flask app."""
 
     app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
@@ -87,5 +86,5 @@ if __name__ == "__main__":
 
     # Need to add to db.create_all()
 
-    connect_to_db(app, "postgresql:///task_manager")
+    connect_to_db(app, "postgresql:///phones")
     print "Connected to DB."

@@ -36,10 +36,24 @@ app.jinja_env.undefined = StrictUndefined
 
 
 @app.route('/')
-def display_login():
-    """Homepage. Login and registration displayed."""
+def landing():
+    """Homepage."""
 
     return render_template("landing.html")
+
+
+@app.route('/shelters')
+def shelters():
+    """Shelters that are interested in becoming involved can sign up here."""
+
+    return render_template("shelter_sign_up.html")
+
+
+@app.route('/about-us')
+def about():
+    """How we got started and our backgrounds."""
+
+    return render_template("about_us.html")
 
 
 # Listening or requests
