@@ -56,6 +56,20 @@ def about():
     return render_template("about_us.html")
 
 
+@app.route('/problem')
+def problem():
+    """The problem that we're trying to solve."""
+
+    return render_template("problem.html")
+
+
+@app.route('/approach')
+def approach():
+    """How we go about solving the problem."""
+
+    return render_template("approach.html")
+
+
 # Listening or requests
 if __name__ == "__main__":
 
