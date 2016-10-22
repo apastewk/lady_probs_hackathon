@@ -34,7 +34,13 @@ app.jinja_env.auto_reload = True
 # Raises an error when an undefined variable is used in Jinja2.
 app.jinja_env.undefined = StrictUndefined
 
-@app.route()
+
+@app.route('/')
+def display_login():
+    """Homepage. Login and registration displayed."""
+
+    return render_template("landing.html")
+
 
 # Listening or requests
 if __name__ == "__main__":
@@ -61,7 +67,7 @@ if __name__ == "__main__":
 
     #Run app locally (full)
     #Points to port to use and turns on debugger
-    app.run(port=5050, debug=True, host='0.0.0.0')
+    app.run(port=5000, debug=True, host='0.0.0.0')
 
     #Run app via Heroku
     # PORT = int(os.environ.get("PORT", 5000))
