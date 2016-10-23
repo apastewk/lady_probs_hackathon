@@ -33,6 +33,9 @@ class Shelter(db.Model):
                       unique=True,
                       nullable=False)
 
+    phone_number = db.Column(db.Integer,
+                              nullable=True)
+
     time_zone = db.Column(db.String(25),
                           nullable=True)
 

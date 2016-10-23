@@ -43,10 +43,32 @@ def landing():
 
 
 @app.route('/shelters')
-def shelters():
+def shelters_form():
     """Shelters that are interested in becoming involved can sign up here."""
 
     return render_template("shelter_sign_up.html")
+
+
+@app.route('/shelters', methods=['POST'])
+def add_shelter():
+    """Adds the new shelters to the database."""
+
+    shelter_name = request.form.get('sheltername')
+    shelter_address = request.form.get('address')
+    first_name = request.form.get('firstname')
+    last_name = request.form.get('lastname')
+    email = request.form.get('email')
+    number = request.form.get('number')
+
+    new_shelter = Shelter(shelter_name=shelter_name,
+                          shelter_address=shelter_address,
+                          first_name=first_name,
+                          last_name=last_name,
+                          email=email,
+                          number=number)
+   
+    db.session.add(new_shelter)
+    db.session.commit()
 
 
 @app.route('/about-us')
